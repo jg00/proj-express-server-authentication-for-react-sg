@@ -34,7 +34,7 @@ userSchema.pre("save", function (next) {
 
       // Overwrite plain text password with encrypted password
       user.password = hash;
-      console.log("THERE", user);
+
       next(); // Go ahead and save the model
     });
   });
