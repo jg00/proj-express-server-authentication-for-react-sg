@@ -3,6 +3,7 @@ const http = require("http");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const router = require("./router");
 
 const app = express();
@@ -17,7 +18,7 @@ mongoose.connect("mongodb://localhost:auth/auth", {
 /*
   // For dev or prod environments
   if (process.env.NODE_ENV !== "test") {
-    mongoose.connect("mongodb://localhost/muber", {
+    mongoose.connect("mongodb://localhost/mydb", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
@@ -28,6 +29,7 @@ mongoose.connect("mongodb://localhost:auth/auth", {
 
 // App Setup
 app.use(morgan("combined"));
+app.use(cors());
 app.use(bodyParser.json({ type: "*/*" }));
 // app.use(bodyParser.urlencoded({ extended: false }));
 router(app);
